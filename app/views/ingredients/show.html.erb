@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h2><%= @ingredient.name %></h2>
+    <p><%= @ingredient.supplier %></p>
+  <p><%= @ingredient.cost_per_gram %></p>
+
+  <div class="d-flex align-content">
+    <%= link_to "Volver", ingredients_path, class: "btn btn-primary" %>
+    <%= link_to "Editar", edit_ingredient_path(@ingredient), class: "btn" %>
+    <%# Delete not working  %>
+    <%#= link_to 'Delete', ingredient_path(@ingredient), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+  </div>
+
+</div>

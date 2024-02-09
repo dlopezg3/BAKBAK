@@ -1,0 +1,20 @@
+<div class="container">
+  <% if @ingredients.size > 0 %>
+    <h1>Lista de ingredientes disponibles</h1>
+  <% else %>
+    <h1>No hay ingredientes disponibles</h1>
+    <button>
+      <%= link_to "Crear ingrediente", new_ingredient_path, class: "btn btn-primary" %>
+    </button>
+  <% end %>
+
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+      <li>
+        <%= link_to ingredient.name, ingredient_path(ingredient) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Crear ingrediente", new_ingredient_path, class: "btn btn-primary" %>
+  <%= link_to "Home", home_path, class: "btn btn-primary" %>
+</div>
