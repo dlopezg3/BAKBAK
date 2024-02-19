@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get "about", to: "pages#about", as: :about
   get "up" => "rails/health#show", as: :rails_health_check
 
+  resources :ingredients
+  resources :products do
+    resources :product_sizes, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end

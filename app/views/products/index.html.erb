@@ -1,0 +1,17 @@
+<div class="container">
+  <% if @products.size > 0 %>
+    <h1>Lista de productos disponibles</h1>
+  <% else %>
+    <h1>No hay productos disponibles</h1>
+  <% end %>
+
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <%= link_to product.name, product_path(product) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Crear producto", new_product_path, class: "btn btn-primary" %>
+  <%= link_to "Home", home_path, class: "btn btn-primary" %>
+</div>

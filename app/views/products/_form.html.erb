@@ -1,0 +1,29 @@
+<h1>
+  Agrega un nuevo producto
+</h1>
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+    <ul>
+    <% @product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for @product do |f| %>
+  <%= f.input :name, label: 'Nombre' %>
+  <%= f.input :product_type, collection: Product::CATEGORIES, label: "Tipo de producto"%>
+  <%= f.input :details, label: 'Detalles' %>
+
+  <%= f.fields_for :product_sizes do |ps| %>
+    <%= ps.input :size, collection: ProductSize::SIZES, prompt: "Selecciona un tamaño" %>
+    <%= ps.input :cost %>
+    <%= ps.input :price %>
+  <% end %>
+
+  <%= f.button :submit, class: "btn btn-primary " %>
+<% end %>
+<%= link_to "Home", home_path, class: "btn btn-primary" %>
