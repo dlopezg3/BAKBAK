@@ -1,0 +1,22 @@
+<h1>
+  Agrega un nuevo tamaño
+</h1>
+<% if @product_size.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product_size.errors.count, "error") %> prohibited this product size from being saved:</h2>
+
+    <ul>
+    <% @product_size.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for [@product, @product_size] do |f| %>
+  <%= f.input :size, collection: ProductSize::SIZES, prompt: "Selecciona un tamaño" %>
+  <%= f.input :price, label: 'Precio' %>
+  <%= f.input :cost, label: 'Costo' %>
+  <%= f.button :submit, class: "btn btn-primary " %>
+<% end %>
+<%= link_to "Home", home_path, class: "btn btn-primary" %>
